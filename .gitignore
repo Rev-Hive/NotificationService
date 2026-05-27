@@ -1,0 +1,62 @@
+# Maven
+target/
+!.mvn/wrapper/maven-wrapper.jar
+
+# IntelliJ
+.idea/
+*.iml
+
+# VS Code
+.vscode/
+
+# STS / Eclipse
+.project
+.classpath
+.settings/
+
+# Logs
+*.log
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Environment Files
+.env
+
+# Docker
+docker-compose.override.yml
+
+# Mac
+.AppleDouble
+.LSOverride
+
+# Windows
+desktop.ini
+
+# Generated files
+out/
+bin/
+
+# Java
+*.class
+
+# Maven Wrapper
+.mvn/wrapper/maven-wrapper.properties
+
+# Node
+node_modules/
+
+# Temporary
+temp/
+tmp/
+
+# Coverage
+coverage/
+
+# Jar files
+*.jar
+!target/*.jar
+
+# Docker ignore
+Dockerfile.old
