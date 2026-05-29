@@ -43,4 +43,21 @@ public class NotificationService {
 
         return repository.findByUserId(userId);
     }
+
+    public Notification markAsRead(String id) {
+        Notification notification = repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Notification not found with ID: " + id));
+        notification.setRead(true);
+        return repository.save(notification);
+    }
+
+    public void markAllAsRead(Long userId) {
+        List<Notification> notifications = repository.findByUserId(userId);
+        for (Notification n : notifications) {
+            if (!n.isRead()) {
+                n.setRead(true);
+                repository.save(n);
+            }
+        }
+    }
 }

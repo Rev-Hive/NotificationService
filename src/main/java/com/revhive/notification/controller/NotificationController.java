@@ -27,6 +27,7 @@ public class NotificationController {
                         .userId(request.getUserId())
                         .title(request.getTitle())
                         .message(request.getMessage())
+                        .type(request.getType())
                         .build();
 
         return service.sendNotification(
@@ -40,5 +41,29 @@ public class NotificationController {
     ) {
 
         return service.getUserNotifications(userId);
+    }
+
+    @GetMapping("/my-notifications")
+    public List<Notification> getMyNotifications(
+            @RequestHeader("X-User-Id") Long userId,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "20") int size
+    ) {
+        return service.getUserNotifications(userId);
+    }
+
+    @PutMapping("/{notificationId}/read")
+    public Notification markAsRead(
+            @PathVariable String notificationId,
+            @RequestHeader("X-User-Id") Long userId
+    ) {
+        return service.markAsRead(notificationId);
+    }
+
+    @PutMapping("/read-all")
+    public void markAllAsRead(
+            @RequestHeader("X-User-Id") Long userId
+    ) {
+        service.markAllAsRead(userId);
     }
 }

@@ -15,4 +15,6 @@ public class NotificationRequest {
 
     @NotBlank
     private String message;
+
+    private String type;
 }
