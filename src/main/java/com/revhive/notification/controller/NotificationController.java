@@ -45,7 +45,7 @@ public class NotificationController {
 
     @GetMapping("/my-notifications")
     public List<Notification> getMyNotifications(
-            @RequestHeader("X-User-Id") Long userId,
+            @RequestHeader("X-Auth-UserId") Long userId,
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "20") int size
     ) {
@@ -55,14 +55,14 @@ public class NotificationController {
     @PutMapping("/{notificationId}/read")
     public Notification markAsRead(
             @PathVariable String notificationId,
-            @RequestHeader("X-User-Id") Long userId
+            @RequestHeader("X-Auth-UserId") Long userId
     ) {
         return service.markAsRead(notificationId);
     }
 
     @PutMapping("/read-all")
     public void markAllAsRead(
-            @RequestHeader("X-User-Id") Long userId
+            @RequestHeader("X-Auth-UserId") Long userId
     ) {
         service.markAllAsRead(userId);
     }
