@@ -24,7 +24,7 @@
 
         <!-- SPRING CLOUD -->
         <spring-cloud.version>2023.0.3</spring-cloud.version>
-
+        <lombok.version>1.18.38</lombok.version>
     </properties>
 
     <dependencies>
@@ -123,6 +123,13 @@
                 <configuration>
                     <source>17</source>
                     <target>17</target>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>${lombok.version}</version>
+                        </path>
+                    </annotationProcessorPaths>
                 </configuration>
 
             </plugin>

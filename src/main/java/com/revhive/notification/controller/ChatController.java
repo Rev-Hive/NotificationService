@@ -1,5 +1,6 @@
 package com.revhive.notification.controller;
 
+import com.revhive.notification.dto.ConversationDTO;
 import com.revhive.notification.model.ChatMessage;
 import com.revhive.notification.service.ChatService;
 import lombok.RequiredArgsConstructor;
@@ -39,5 +40,22 @@ public class ChatController {
     ) {
         log.info("REST chat history request for user {} and user {}", senderId, receiverId);
         return chatService.getChatHistory(senderId, receiverId);
+    }
+
+    @GetMapping("/api/chat/conversations")
+    public List<ConversationDTO> getConversations(
+            @RequestParam Long userId
+    ) {
+        log.info("REST request to fetch conversations for user {}", userId);
+        return chatService.getConversations(userId);
+    }
+
+    @PutMapping("/api/chat/read")
+    public void markMessagesAsRead(
+            @RequestParam Long senderId,
+            @RequestParam Long receiverId
+    ) {
+        log.info("REST request to mark messages from {} to {} as read", senderId, receiverId);
+        chatService.markMessagesAsRead(senderId, receiverId);
     }
 }
