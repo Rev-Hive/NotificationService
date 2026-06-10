@@ -41,7 +41,7 @@ public class NotificationService {
             Long userId
     ) {
 
-        return repository.findByUserId(userId);
+        return repository.findByUserIdOrderByCreatedAtDesc(userId);
     }
 
     public Notification markAsRead(String id) {
@@ -52,7 +52,7 @@ public class NotificationService {
     }
 
     public void markAllAsRead(Long userId) {
-        List<Notification> notifications = repository.findByUserId(userId);
+        List<Notification> notifications = repository.findByUserIdOrderByCreatedAtDesc(userId);
         for (Notification n : notifications) {
             if (!n.isRead()) {
                 n.setRead(true);
